@@ -1,0 +1,77 @@
+{
+  "name": "mcp--inspector",
+  "displayName": "MCP Inspector",
+  "publisher": "DhananjaySenday",
+  "icon": "resources/icon-black.png",
+  "description": "Easily inspect and interact with MCP servers directly from Visual Studio Code—no need to download external inspectors. This extension provides seamless integration for monitoring and debugging MCP protocols within your development environment",
+  "version": "0.0.3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dhananjay-JSR/mcp-inspector"
+  },
+  "author": {
+    "email": "hello@dhananjaay.dev",
+    "url": "https://dhananjaay.dev",
+    "name": "Dhananjay Senday"
+  },
+  "engines": {
+    "vscode": "^1.98.0"
+  },
+  "categories": [
+    "Other",
+    "AI",
+    "Debuggers",
+    "Testing"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "mcp--inspector.createNewRequest",
+        "title": "Create New MCP Request"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "mcp--inspector",
+          "title": "MCP Inspector",
+          "icon": "resources/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "mcp--inspector": [
+        {
+          "id": "mcp--inspector.inspector-view",
+          "name": "MCP Inspector",
+          "type": "webview"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "yarn run compile && yarn run lint",
+    "lint": "eslint src",
+    "test": "vscode-test",
+    "postinstall": "node patch-pkce.js && node patch-sdk.js"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.98.0",
+    "@typescript-eslint/eslint-plugin": "^8.25.0",
+    "@typescript-eslint/parser": "^8.25.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.21.0",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.8.0"
+  }
+}
