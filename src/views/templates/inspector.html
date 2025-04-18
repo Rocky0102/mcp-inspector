@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP Inspector</title>
+    <link rel="stylesheet" href="{{cssUri}}">
+</head>
+<body>
+    <div class="container">
+        <h2>MCP Inspector</h2>
+        <div class="form-group">
+            <label for="transportType">Transport Type:</label>
+            <select id="transportType" onchange="handleTransportChange()">
+                <option value="stdio">STDIO</option>
+                <option value="sse">SSE</option>
+            </select>
+        </div>
+
+        <!-- STDIO Section -->
+        <div id="stdioSection" class="transport-section active">
+            <div class="form-group">
+                <label for="command">Server Script Path:</label>
+                <input type="text" id="command" placeholder="Enter path to server script (.js or .py)">
+            </div>
+            <div class="form-group">
+                <label for="scriptArgs">Script Arguments:</label>
+                <input type="text" id="scriptArgs" placeholder="Enter script arguments (optional)">
+            </div>
+        </div>
+
+        <!-- SSE Section -->
+        <div id="sseSection" class="transport-section">
+            <div class="form-group">
+                <label for="serverUrl">Server URL:</label>
+                <input type="text" id="serverUrl" placeholder="Enter SSE server URL">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button onclick="connect()">
+                <span id="statusIndicator" class="status-indicator status-disconnected"></span>
+                <span id="connectButtonText">Connect</span>
+            </button>
+        </div>
+
+        <div class="response-container">
+            <h3>Connection Status:</h3>
+            <pre id="status">Not connected</pre>
+        </div>
+
+        <div id="toolsContainer" class="tools-container">
+            <h3>Available Tools:</h3>
+            <div id="toolsList"></div>
+        </div>
+    </div>
+
+    <!-- Tool Execution Modal -->
+    <div id="toolModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3 id="modalTitle">Execute Tool</h3>
+            <div class="modal-body">
+                <form id="toolForm">
+                    <div id="toolFields"></div>
+                    <div class="modal-buttons">
+                        <button type="button" onclick="closeModal()">Cancel</button>
+                        <button type="submit">Execute</button>
+                    </div>
+                </form>
+                <div id="responseViewer" class="response-viewer">
+                    <pre id="responseContent"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{scriptUri}}"></script>
+</body>
+</html>

@@ -15,7 +15,6 @@ interface InputSchema {
 
 interface Tool {
     name: string;
-    description?: string
     input_schema: InputSchema;
 }
 
@@ -43,7 +42,6 @@ export class MCPClient {
             this.tools = toolsResult.tools.map((tool) => {
                 return {
                     name: tool.name,
-                    description: tool.description,
                     input_schema: tool.inputSchema,
                 };
             });
@@ -74,7 +72,6 @@ export class MCPClient {
             this.tools = toolsResult.tools.map((tool) => {
                 return {
                     name: tool.name,
-                    description: tool.description,
                     input_schema: tool.inputSchema,
                 };
             });

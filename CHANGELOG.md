@@ -18,3 +18,4 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 - Fixed ES Module compatibility issue with pkce-challenge dependency
 - Added automatic patching scripts for smoother installation
+- Added asset copying script to fix template loading issues
